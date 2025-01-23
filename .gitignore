@@ -1,0 +1,33 @@
+# Ignore server node_modules
+server/node_modules/
+
+# Ignore client node_modules
+client/node_modules/
+
+# Ignore other common files/folders
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Ignore dist/ build directories
+dist/
+dist-ssr/
+
+# Ignore environment files
+*.local
+.env
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
