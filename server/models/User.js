@@ -9,7 +9,7 @@ const userSchema=mongoose.Schema({
 
     password:{type:String,required:true},
 
-    profileImage:{type:String,default:'../Images/img.jpg'}
+    profileImage:{type:String,default:'1737815279660background-7276646_1280.jpg'}
 
 },{timestamps:true})
 
@@ -27,6 +27,6 @@ userSchema.methods.comparePassword=async function(password){
 
 }
 
-const User=mongoose.model('user',userSchema);
+const User=mongoose.model('User',userSchema);
 
 module.exports=User;

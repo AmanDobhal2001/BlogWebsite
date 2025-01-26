@@ -13,13 +13,30 @@ showBlog = async (req, res) => {
 
 }
 
+
+showOnlyBlog = async (req, res) => {
+    try {
+        const id=req.params.blog_id;
+        
+        const blog=await Blog.findOne({_id:id}).populate('author','userName');
+        res.status(200).json({blog});
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+
+}
+
 addBlog = async (req, res) => {
 
     try {
-        const user_id = req.user_id;
-        const { blogImage,title, content } = req.body;
+        const author = req.user_Id;
+        const { title, content } = req.body;
 
-        const blog = new Blog({blogImage, title, content, user_id });
+        const blogImage=req.file?req.file.filename:undefined;
+
+        const blog = new Blog({blogImage, title, content, author });
         await blog.save();
         res.status(200).json({ message: "Blog saved successfully" });
     }
@@ -29,4 +46,4 @@ addBlog = async (req, res) => {
 
 }
 
-module.exports = { showBlog, addBlog }
+module.exports = { showBlog, addBlog , showOnlyBlog }

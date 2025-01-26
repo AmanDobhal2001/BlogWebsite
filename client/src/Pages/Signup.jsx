@@ -29,7 +29,7 @@ function Signup() {
       formDataToSend.append('profileImage', formData.profileImage);
       const response = await api.post('/auth/signup', formDataToSend, { headers: { 'Content-Type': 'multipart/form-data' } });
 
-      navigate('/');
+      navigate('/login');
     }
 
     catch (error) {
@@ -43,13 +43,13 @@ function Signup() {
   }
 
   return (
-    <div className="flex items-center text-black justify-center pt-24 pb-14  bg-gray-300">
+    <div className="flex items-center text-black justify-center pt-7 pb-20  bg-gray-300">
       <form
         className="bg-white p-8 rounded shadow-md w-96"
         onSubmit={handleSubmit}
       >
         <h1 className="text-2xl font-bold mb-6 text-center">Sign Up</h1>
-        <div className="mb-4">
+        <div className="mb-2">
           <label htmlFor="name" className="block text-gray-700 font-semibold">
             Name
           </label>
@@ -64,7 +64,7 @@ function Signup() {
             required
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-2">
           <label htmlFor="email1" className="block text-gray-700 font-semibold">
             Email
           </label>
@@ -97,7 +97,7 @@ function Signup() {
             required
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-3">
           <label
             htmlFor="profileImage"
             className="block text-gray-700 font-semibold"

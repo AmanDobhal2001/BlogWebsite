@@ -27,12 +27,11 @@ function Login() {
 
     catch (error) {
           alert(error.response.data.error);
-          return;
     }
   }
 
   return (
-    <div className="flex items-center text-black justify-center pt-24 pb-14  bg-gray-300">
+    <div className="flex items-center text-black justify-center pt-20 pb-44  bg-gray-300">
       <form
         className="bg-white p-8 rounded shadow-md w-96"
         onSubmit={handleSubmit}

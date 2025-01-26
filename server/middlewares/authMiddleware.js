@@ -10,15 +10,15 @@ async function authHandler(req,res,next)
     }
 
     try{
-    const data=await JWT.verify(token,process.env.JWT_SECRET);
-
-    req.user_id=data.user_id;
+    const data=await JWT.verify(token,process.env.SECRET_KEY);
+    req.user_Id=data.user_Id;
     next();
     }
 
     catch(error)
     {
-        res.status(500).json({error:"Internal server error"});
+        console.log(error)
+        res.status(401).json({error:"Internal server error"});
     }
 }
 
