@@ -29,7 +29,8 @@ function Signup() {
       formDataToSend.append('profileImage', formData.profileImage);
       const response = await api.post('/auth/signup', formDataToSend, { headers: { 'Content-Type': 'multipart/form-data' } });
 
-      navigate('/login');
+      localStorage.setItem('token',response.data.token)
+      navigate('/');
     }
 
     catch (error) {

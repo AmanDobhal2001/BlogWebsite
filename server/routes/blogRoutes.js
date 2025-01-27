@@ -5,8 +5,7 @@ const authHandler=require('../middlewares/authMiddleware');
 const upload=require('../middlewares/fileUpload');
 
 
-router.route('/').get(showBlog);
+router.route('/').get(showBlog).post(authHandler,upload.single('blogImage'),addBlog);
 router.route('/:blog_id').get(authHandler,showOnlyBlog);
-router.route('/').post(authHandler,upload.single('blogImage'),addBlog);
 
 module.exports=router;

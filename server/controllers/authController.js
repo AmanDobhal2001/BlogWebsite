@@ -26,7 +26,8 @@ signUp = async (req, res) => {
         const user = new User({ userName, email, password ,profileImage});
         await user.save(); 
 
-        res.status(201).json({ message: "User created successfully" });
+        const token = await JWT.sign({user_Id:user._id.toString()}, process.env.SECRET_KEY);
+        res.status(201).json({token});
     }
 
     catch (error) {

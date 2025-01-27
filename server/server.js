@@ -8,6 +8,7 @@ const blogRoutes=require('./routes/blogRoutes');
 const cors = require('cors');
 app.use(cors({ origin: 'http://localhost:5173' }));
 const path = require('path');
+const commentRoutes=require('./routes/commentRoutes');
 
 
 //Middlewares
@@ -20,6 +21,7 @@ ConnectDb();
 //Routes
 app.use('/api/auth',authRoutes);
 app.use('/api/blog',blogRoutes);
+app.use('/api/comment',commentRoutes);
 
 app.listen(PORT,()=>{
     console.log(`App is listening at port ${PORT}`);

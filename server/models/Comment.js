@@ -6,7 +6,7 @@ const commentSchema=mongoose.Schema({
 
     blog:{type:mongoose.Schema.Types.ObjectId,ref:"Blog",required:true},
 
-    username:{type:mongoose.Schema.Types.ObjectId,ref:"User",required:true}
+    user:{type:mongoose.Schema.Types.ObjectId,ref:"User",required:true}
 
 },{timestamps:true})
 
