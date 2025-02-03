@@ -34,12 +34,7 @@ function Signup() {
     }
 
     catch (error) {
-      
-      if(error.response)
-      {
-        alert(error.response.data.error);
-      }
-
+        alert("Invalid credentials");
     }
   }
 

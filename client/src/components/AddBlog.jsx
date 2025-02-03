@@ -24,7 +24,7 @@ function AddBlog() {
       formDataToSent.append('content', formData.content);
       formDataToSent.append('blogImage', formData.blogImage);
       const response = await api.post('/blog', formDataToSent, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } });
-      navigate('/');
+      navigate('/MyBlogs');
     }
     catch (error) {
       if (error.response) {

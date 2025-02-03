@@ -2,20 +2,21 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import TranslateWidget from './GoogleTranslate';
 
 function NavScrollExample() {
 
-    const navigate=useNavigate();
-    const token=localStorage.getItem('token');
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
-    async function handleLogOut(e){
+  async function handleLogOut(e) {
 
-        localStorage.removeItem('token');
+    localStorage.removeItem('token');
 
-        navigate('/login');        
+    navigate('/login');
 
-    }
+  }
 
   return (
     <Navbar expand="lg" className="bg-body-secondary sticky-top">
@@ -33,8 +34,12 @@ function NavScrollExample() {
                 <Link to="/signup" className="nav-link">Sign Up</Link>
               </>
             ) : (
+            <>
               <Link to="/addBlog" className="nav-link">Add Blog</Link>
+              <Link to="/myBlogs" className="nav-link">My Blogs</Link>
+            </>
             )}
+            <div className='pt-2 ml-8'><TranslateWidget /></div>
           </Nav>
           {token && (
             <Button onClick={handleLogOut} className="ms-auto btn btn-primary">
