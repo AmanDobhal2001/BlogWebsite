@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 
 const blogSchema=mongoose.Schema({
 
-    blogImage:{type:String,default:'1737815279660background-7276646_1280.jpg'},
+    blogImage:{type:String,default:'background-7276646_1280.jpg'},
 
     title:{type:String,required:true},
 

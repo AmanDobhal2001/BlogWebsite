@@ -9,7 +9,7 @@ const userSchema=mongoose.Schema({
 
     password:{type:String,required:true},
 
-    profileImage:{type:String,default:'1737815279660background-7276646_1280.jpg'}
+    profileImage:{type:String,default:'background-7276646_1280.jpg'}
 
 },{timestamps:true})
 

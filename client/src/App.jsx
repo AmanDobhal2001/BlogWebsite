@@ -12,7 +12,7 @@ import EditBlog from './components/EditBlog';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/BlogWebsite">
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>

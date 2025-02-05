@@ -1,17 +1,15 @@
-const blog = require('stream');
 const Blog = require('../models/Blog');
 const Comment=require('../models/Comment');
 
 showBlog = async (req, res) => {
     try {
-
-        const blog = Blog.find().populate('author', 'userName').cursor();
+        const cursor = await Blog.find().populate('author', 'userName').cursor();
 
         res.write('[');
 
         let first = true;
 
-        blog.on('data', (chunk) => {
+        cursor.on('data', (chunk) => {
             if (!first) {
                 res.write(',');
             }
@@ -19,12 +17,12 @@ showBlog = async (req, res) => {
             first = false;
         })
 
-        blog.on('end', () => {
+        cursor.on('end', () => {
             res.write(']');
             res.end();
         })
 
-        blog.on('error', (err) => {
+        cursor.on('error', (err) => {
             res.status(500).json({ error: "Internal server error" });
         })
     }
@@ -72,8 +70,30 @@ getUserBlogs = async (req,res) => {
     const author = req.user_Id;
 
     try {
-        const Blogs = await Blog.find({ author: author }).populate('author','userName');
-        res.status(200).json({ Blogs });
+        const cursor = await Blog.find({ author: author }).populate('author','userName').cursor();
+        
+        res.write('[');
+        let first=true;
+
+        cursor.on('data',(chunk)=>{
+            if(!first)
+            {
+                res.write(',');
+            }
+
+            res.write(JSON.stringify(chunk));
+            first=false;
+        })
+
+        cursor.on('end',()=>{
+            res.write(']');
+            res.end();
+        })
+
+        cursor.on('error',()=>{
+            res.status(500).json({ error: "Internal server error" });
+        })
+
     }
 
     catch (error) {
