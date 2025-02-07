@@ -11,13 +11,32 @@ function MyBlogs() {
 
   const [MyBlogs, setMyBlogs] = useState([]);
 
-  useEffect(() => {
+  useEffect(() => { 
     const getMyBlogs = async () => {
 
       try {
         const response = await api.get('/blog/MyBlogs', { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } });
 
-        setMyBlogs(response.data.Blogs);
+        const reader=response.body.getReader();;
+        const decoder=new TextDecoder();
+
+        let result='';
+
+        while(true)
+        {
+          const {done,value}=await reader.read();
+
+          if(done)
+          {
+            break;
+          }
+
+          result+=decoder.decode(value,{stream:true});
+        }
+
+        const data=await JSON.parse(result);
+
+        setMyBlogs(data);
       }
 
       catch (error) {

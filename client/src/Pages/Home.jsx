@@ -11,7 +11,7 @@ function Home() {
   useEffect(() => {
     const getBlogs = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/blog');
+        const response = await fetch('http://blogwebsitebackened.up.railway.app/api/blog');
        
         const reader= response.body.getReader();
         const decoder= new TextDecoder();
